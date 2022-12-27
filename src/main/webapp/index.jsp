@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Hello from cloudbots..fromjenkins..using deploy to container plugin with auto deploy on tomcat server..!!</h2>
+<h2> hello from cloudbots its new projects for auto deploy on tomcat </h2>
 </body>
 </html>
