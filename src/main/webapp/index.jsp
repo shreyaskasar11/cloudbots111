@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2> hello from cloudbots project for auto deployment on tomcat server v11..!!</h2>
+<h2> hello from cloudbots project for auto deployment on tomcat server..!!</h2>
 </body>
 </html>
