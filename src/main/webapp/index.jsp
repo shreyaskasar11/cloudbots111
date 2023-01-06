@@ -1,48 +1,97 @@
-<html>
-	<head>
-		<title>DevOpsWebApp</title>
-	</head>
-	<body align=center>
-		<h2>Hello, DevOps World!!!</h2>
-		<h3>Find the <font color=red>DevOps Tools</font> list below.</h3>
-		<a href=LoginPage.html >Login</a>
-		<br/><br/>
-		Click <a href="sample.html">here</a> to go to sample.html page.
-		<br/><br/> 
-		<a href=training.html>Go To Training Page</a>
-		<br/><br/>
-		<table width="59%" border="1" align="center">
-			<tr><th colspan="3">Various Tools which are suporting to DevOps</th></tr>
-			<tr><td>S.No.</td><td>Type</td><td>Tool Name</td></tr>
-			<tr><td>1</td><td>Build Tools</td><td>Java: Ant with ivy, Maven, Gradle etc. || .net: NAnt, MS-Build etc.</td></tr>
-			<tr><td>2</td><td>Version Control(i.e., code repository) tools</td><td>SVN, GitHub, Bitbucket, GitLab, RTC, TFS, Gerrit etc.</td></tr>
-			<tr><td>3</td><td>CI/CD tools</td><td>Jenkins and other similar popular tools TeamCity, Bamboo etc.</td></tr>
-			<tr><td>4</td><td>Remote repositories, package manager</td><td>artifactory, nexus etc.</td></tr>
-			<tr><td>5</td><td>Scripting/Programming</td><td>Python Script, Ruby, Shell Script, Groovy Script, Java Script, Java, Maven Plugin API etc.</td></tr>
-			<tr><td>6</td><td>Application Servers</td><td>TomCat, JBoss, WAS8.5, WebLogic etc.</td></tr>
-			<tr><td>7</td><td>Code-qality Tools</td><td>SonarQuebe etc.</td></tr>
-			<tr><td>8</td><td>Issue/Project management</td><td>JIRA, Confluence, Trac etc tools for issue management and documentation purpose.</td></tr>
-			<tr><td>9</td><td>Cloud Management portals</td><td>AWS, Azure, Cloud Foundry, Google Cloud Platform etc.</td></tr>
-			<tr><td>10</td><td>Configuration management Tools</td><td>ANSIBLE, PUPPET, CHEF, Salt, URBAN Code Deployment etc.</td></tr>
-			<tr><td>11</td><td>Monitoring tools</td><td>Grafana, Graphite, NAGIOS etc.</td></tr>
-			<tr><td>12</td><td>Containarizartion tools</td><td>Docker, Kubernetes, Vagrant, CoreOS and rkt, Apache Mesos and Mesosphere,Open Container Initiative (OCI), Panamax etc.</td></tr>
-		</table>
-		<br/><br/>
-		<table width="59%" border="1" align="center">
-			<tr><th colspan="3">Tools in our training</th></tr>
-			<tr><td>S.No.</td><td>Type</td><td>Tool Name</td></tr>
-			<tr><td>1</td><td>Build Tools</td><td>Java:Maven</td></tr>
-			<tr><td>2</td><td>Version Control(i.e., code repository) tools</td><td>GitHub</td></tr>
-			<tr><td>3</td><td>CI/CD tools</td><td>Jenkins</td></tr>
-			<tr><td>4</td><td>Remote repositories</td><td>nexus</td></tr>
-			<tr><td>5</td><td>Scripting/Programming</td><td>Important Linux commands and Shell Script</td></tr>
-			<tr><td>6</td><td>Application Servers</td><td>TomCat</td></tr>
-			<tr><td>7</td><td>Code-qality Tools</td><td>SonarQuebe etc.</td></tr>
-			<tr><td>8</td><td>Issue/Project management</td><td>JIRA, Confluence</td></tr>
-			<tr><td>9</td><td>Cloud Management portals</td><td>AWS</td></tr>
-			<tr><td>10</td><td>Configuration management Tools</td><td>ANSIBLE</td></tr>
-			<tr><td>11</td><td>Monitoring tools</td><td>NAGIOS</td></tr>
-			<tr><td>12</td><td>Containarizartion tools</td><td>Docker</td></tr>
-		</table>
-	</body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Jumbotron Template for Bootstrap</title>
+
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right" role="form">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</div>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h1>Hello</h1>
+        <p>This is from dev branch. </p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; Company 2014</p>
+    </footer>
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</body>
 </html>
