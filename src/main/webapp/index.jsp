@@ -1,97 +1,149 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Jumbotron Template for Bootstrap</title>
-
-
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<meta charset="ISO-8859-1">
+<title>Create a Subscription</title>
 </head>
-
 <body>
+	
+	<h1>Enter Details:</h1>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form">
-                <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
-        </div><!--/.navbar-collapse -->
-    </div>
-</div>
-
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <div class="container">
-        <h1>Hello</h1>
-        <p>This is from dev branch. </p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
-    </div>
-</div>
-
-<div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-    </div>
-
-    <hr>
-
-    <footer>
-        <p>&copy; Company 2014</p>
-    </footer>
-</div> <!-- /container -->
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <form name="Subscription Action Form" action="response.jsp">
+            Amount to Charge per Invoice:
+            <input type="number" name="amount" id="amount" value="" min="1" required/>
+            <br>
+            Subscription Type:
+            <input type="radio" id="daily" name="type" value="daily" onclick="DSelected()" required>
+            <script>
+				function DSelected() {
+  				var x = document.getElementById("daily").checked;
+  				if(x)
+  					{
+  					document.getElementById("date").disabled = true; 
+  					document.getElementById("day").disabled = true;
+  					}
+  				else
+  					{
+  					document.getElementById("date").disabled = false; 
+  					document.getElementById("day").disabled = false;
+  					}
+  					}
+			</script>
+  			<label for="daily">Daily</label>
+  			
+  			<input type="radio" id="weekly" name="type" value="weekly" onclick="WSelected()">
+  			<label for="weekly">Weekly</label>
+  			<script>
+				function WSelected() {
+  				var x = document.getElementById("weekly").checked;
+  				if(x)
+  					{
+  					document.getElementById("date").disabled = true; 
+  					document.getElementById("day").disabled = false;
+  					}
+				}
+			</script>
+  			<input type="radio" id="monthly" name="type" value="monthly" onclick="MSelected()">
+  			<label for="monthly">Monthly</label>
+  			<script>
+				function MSelected() {
+  				var x = document.getElementById("monthly").checked;
+  				if(x)
+  					{
+  					document.getElementById("date").disabled = false; 
+  					document.getElementById("day").disabled = true;
+  					}
+				}
+			</script>
+            <br>
+            Date:
+            <select name="date" id="date">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+				<option value="27">27</option>
+				<option value="28">28</option>
+				<option value="29">29</option>
+				<option value="30">30</option>
+				<option value="31">31</option>
+			</select>
+			<br>
+			Day:
+			<select name="day" id="day" required>
+				<option value="monday">Monday</option>
+				<option value="tuesday">Tuesday</option>
+				<option value="wednesday">Wednesday</option>
+				<option value="thursday">Thursday</option>
+				<option value="friday">Friday</option>
+				<option value="saturday">Saturday</option>
+				<option value="sunday">Sunday</option>
+			</select>
+ 			<br>
+ 			<label for="sdate">Start Date:</label>
+				<input type="date" id="sdate" name="sdate">
+			<br>
+			<label for="edate">End Date:</label>
+				<input type="date" id="edate" name="edate" >
+			<br>
+			<script>
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
+ 			if(dd<10){
+        		dd='0'+dd
+    		} 
+    		if(mm<10){
+        		mm='0'+mm
+    		} 
+			today = yyyy+'-'+mm+'-'+dd;
+			document.getElementById("sdate").setAttribute("min", today);
+			document.getElementById("edate").setAttribute("min", today);
+			document.getElementById("sdate").setAttribute("value", today);
+			document.getElementById("edate").setAttribute("value", today);
+			</script>
+            <input type="submit" value="Submit" onclick="dateDiffInDays()" />
+            <script>
+			const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+			// a and b are javascript Date objects
+			function dateDiffInDays() {
+			var a = new Date(document.getElementById("sdate").value);
+		    var b = new Date(document.getElementById("edate").value);
+			  // Discard the time and time-zone information.
+			  const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+			  const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+			  diff =  Math.floor((utc2 - utc1) / _MS_PER_DAY);
+			  if(diff>90)
+				  {
+				  alert("You can select 90 days maximum");
+				  }
+			}
+			</script>
+        </form>
 </body>
 </html>
