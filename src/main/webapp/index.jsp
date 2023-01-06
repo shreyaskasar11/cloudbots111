@@ -1,219 +1,699 @@
-<%--
-Licensed to the Apache Software Foundation (ASF) under one or more
-contributor license agreements.  See the NOTICE file distributed with
-this work for additional information regarding copyright ownership.
-The ASF licenses this file to You under the Apache License, Version 2.0
-(the "License"); you may not use this file except in compliance with
-the License.  You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
---%>
-<%@ page session="false" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<%
-java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy");
-request.setAttribute("year", sdf.format(new java.util.Date()));
-request.setAttribute("tomcatUrl", "https://tomcat.apache.org/");
-request.setAttribute("tomcatDocUrl", "/docs/");
-request.setAttribute("tomcatExamplesUrl", "/examples/");
-%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
-    <head>
-<title>W5HOST</title>
-        <meta charset="UTF-8" />
-        <title><%=request.getServletContext().getServerInfo() %></title>
-        <link href="favicon.ico" rel="icon" type="image/x-icon" />
-        <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <link href="tomcat.css" rel="stylesheet" type="text/css" />
-    </head>
 
-    <body>
-        <div id="wrapper">
-            <div id="navigation" class="curved container">
-                <span id="nav-home"><a href="${tomcatUrl}">Rumah</a></span>
-                <span id="nav-hosts"><a href="${tomcatDocUrl}">Fail</a></span>
-                <span id="nav-config"><a href="${tomcatDocUrl}config/">Tukar Setting</a></span>
-                <span id="nav-examples"><a href="${tomcatExamplesUrl}">Contoh</a></span>
-                <span id="nav-wiki"><a href="https://wiki.apache.org/tomcat/FrontPage">Wiki</a></span>
-                <span id="nav-lists"><a href="${tomcatUrl}lists.html">Mailing Lists</a></span>
-                <span id="nav-help"><a href="${tomcatUrl}findhelp.html">Find Help</a></span>
-                <br class="separator" />
-            </div>
-            <div id="asf-box">
-                <h1>${pageContext.servletContext.serverInfo}</h1>
-            </div>
-            <div id="upper" class="curved container">
-                <div id="congrats" class="curved container">
-                    <h2>SELAMAT DATANG KE W5 HOST?!</h2>
-                </div>
-                <div id="notice">
-                    <img src="tomcat.png" alt="[tomcat logo]" />
-                    <div id="tasks">
-                        <h3>TENGOK BACAAN:</h3>
-                        <h4><a href="${tomcatDocUrl}security-howto.html">Security Considerations How-To</a></h4>
-                        <h4><a href="${tomcatDocUrl}manager-howto.html">Manager Application How-To</a></h4>
-                        <h4><a href="${tomcatDocUrl}cluster-howto.html">Clustering/Session Replication How-To</a></h4>
-                    </div>
-                </div>
-                <div id="actions">
-                    <div class="button">
-                        <a class="container shadow" href="/manager/status"><span>Server Status</span></a>
-                    </div>
-                    <div class="button">
-                        <a class="container shadow" href="/manager/html"><span>Manager App</span></a>
-                    </div>
-                    <div class="button">
-                        <a class="container shadow" href="/host-manager/html"><span>Host Manager</span></a>
-                    </div>
-                </div>
-                <br class="separator" />
-            </div>
-            <div id="middle" class="curved container">
-                <h3>Developer Quick Start</h3>
-                <div class="col25">
-                    <div class="container">
-                        <p><a href="${tomcatDocUrl}setup.html">Tomcat Setup</a></p>
-                        <p><a href="${tomcatDocUrl}appdev/">First Web Application</a></p>
-                    </div>
-                </div>
-                <div class="col25">
-                    <div class="container">
-                        <p><a href="${tomcatDocUrl}realm-howto.html">Realms &amp; AAA</a></p>
-                        <p><a href="${tomcatDocUrl}jndi-datasource-examples-howto.html">JDBC DataSources</a></p>
-                    </div>
-                </div>
-                <div class="col25">
-                    <div class="container">
-                        <p><a href="${tomcatExamplesUrl}">Examples</a></p>
-                    </div>
-                </div>
-                <div class="col25">
-                    <div class="container">
-                        <p><a href="https://wiki.apache.org/tomcat/Specifications">Servlet Specifications</a></p>
-                        <p><a href="https://wiki.apache.org/tomcat/TomcatVersions">Tomcat Versions</a></p>
-                    </div>
-                </div>
-                <br class="separator" />
-            </div>
-            <div id="lower">
-                <div id="low-manage" class="">
-                    <div class="curved container">
-                        <h3>Managing Tomcat</h3>
-                        <p>For security, access to the <a href="/manager/html">manager webapp</a> is restricted.
-                        Users are defined in:</p>
-                        <pre>$CATALINA_HOME/conf/tomcat-users.xml</pre>
-                        <p>In Tomcat 7.0 access to the manager application is split between
-                           different users. &nbsp; <a href="${tomcatDocUrl}manager-howto.html">Read more...</a></p>
-                        <br />
-                        <h4><a href="${tomcatDocUrl}RELEASE-NOTES.txt">Release Notes</a></h4>
-                        <h4><a href="${tomcatDocUrl}changelog.html">Changelog</a></h4>
-                        <h4><a href="${tomcatUrl}migration.html">Migration Guide</a></h4>
-                        <h4><a href="${tomcatUrl}security.html">Security Notices</a></h4>
-                    </div>
-                </div>
-                <div id="low-docs" class="">
-                    <div class="curved container">
-                        <h3>Documentation</h3>
-                        <h4><a href="${tomcatDocUrl}">Tomcat 7.0 Documentation</a></h4>
-                        <h4><a href="${tomcatDocUrl}config/">Tomcat 7.0 Configuration</a></h4>
-                        <h4><a href="https://wiki.apache.org/tomcat/FrontPage">Tomcat Wiki</a></h4>
-                        <p>Find additional important configuration information in:</p>
-                        <pre>$CATALINA_HOME/RUNNING.txt</pre>
-                        <p>Developers may be interested in:</p>
-                        <ul>
-                            <li><a href="https://tomcat.apache.org/bugreport.html">Tomcat 7.0 Bug Database</a></li>
-                            <li><a href="${tomcatDocUrl}api/index.html">Tomcat 7.0 JavaDocs</a></li>
-                            <li><a href="https://github.com/apache/tomcat/tree/7.0.x">Tomcat 7.0 Git Repository at GitHub</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="low-help" class="">
-                    <div class="curved container">
-                        <h3>Getting Help</h3>
-                        <h4><a href="${tomcatUrl}faq/">FAQ</a> and <a href="${tomcatUrl}lists.html">Mailing Lists</a></h4>
-                        <p>The following mailing lists are available:</p>
-                        <ul>
-                            <li id="list-announce"><strong><a href="${tomcatUrl}lists.html#tomcat-announce">tomcat-announce</a><br />
-                                Important announcements, releases, security vulnerability notifications. (Low volume).</strong>
-                            </li>
-                            <li><a href="${tomcatUrl}lists.html#tomcat-users">tomcat-users</a><br />
-                                User support and discussion
-                            </li>
-                            <li><a href="${tomcatUrl}lists.html#taglibs-user">taglibs-user</a><br />
-                                User support and discussion for <a href="${tomcatUrl}taglibs/">Apache Taglibs</a>
-                            </li>
-                            <li><a href="${tomcatUrl}lists.html#tomcat-dev">tomcat-dev</a><br />
-                                Development mailing list, including commit messages
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <br class="separator" />
-            </div>
-            <div id="footer" class="curved container">
-                <div class="col20">
-                    <div class="container">
-                        <h4>Other Downloads</h4>
-                        <ul>
-                            <li><a href="${tomcatUrl}download-connectors.cgi">Tomcat Connectors</a></li>
-                            <li><a href="${tomcatUrl}download-native.cgi">Tomcat Native</a></li>
-                            <li><a href="${tomcatUrl}taglibs/">Taglibs</a></li>
-                            <li><a href="${tomcatDocUrl}deployer-howto.html">Deployer</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col20">
-                    <div class="container">
-                        <h4>Other Documentation</h4>
-                        <ul>
-                            <li><a href="${tomcatUrl}connectors-doc/">Tomcat Connectors</a></li>
-                            <li><a href="${tomcatUrl}connectors-doc/">mod_jk Documentation</a></li>
-                            <li><a href="${tomcatUrl}native-doc/">Tomcat Native</a></li>
-                            <li><a href="${tomcatDocUrl}deployer-howto.html">Deployer</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col20">
-                    <div class="container">
-                        <h4>Get Involved</h4>
-                        <ul>
-                            <li><a href="${tomcatUrl}getinvolved.html">Overview</a></li>
-                            <li><a href="${tomcatUrl}source.html">Source Repositories</a></li>
-                            <li><a href="${tomcatUrl}lists.html">Mailing Lists</a></li>
-                            <li><a href="https://wiki.apache.org/tomcat/FrontPage">Wiki</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col20">
-                    <div class="container">
-                        <h4>Miscellaneous</h4>
-                        <ul>
-                            <li><a href="${tomcatUrl}contact.html">Contact</a></li>
-                            <li><a href="${tomcatUrl}legal.html">Legal</a></li>
-                            <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
-                            <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col20">
-                    <div class="container">
-                        <h4>Apache Software Foundation</h4>
-                        <ul>
-                            <li><a href="${tomcatUrl}whoweare.html">Who We Are</a></li>
-                            <li><a href="${tomcatUrl}heritage.html">Heritage</a></li>
-                            <li><a href="https://www.apache.org">Apache Home</a></li>
-                            <li><a href="${tomcatUrl}resources.html">Resources</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <br class="separator" />
-            </div>
-            <p class="copyright">Copyright &copy;1999-${year} Apache Software Foundation.  All Rights Reserved</p>
-        </div>
-    </body>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>aegean</title>
+
+<meta name="keywords" content="">
+
+<link
+	href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800'
+	rel='stylesheet' type='text/css'>
+
+<!-- Bootstrap and Font Awesome css -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Css animations  -->
+<link href="<c:url value="/resources/css/animate.css"/>"
+	rel="stylesheet">
+
+<!-- Theme stylesheet, if possible do not edit this stylesheet -->
+<link href="<c:url value="/resources/css/style.default.css"/>"
+	rel="stylesheet" id="theme-stylesheet">
+
+<!-- Custom stylesheet - for your changes -->
+<link href="<c:url value="/resources/css/custom.css"/>" rel="stylesheet">
+
+<!-- Responsivity for older IE -->
+
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+
+<!-- Favicon and apple touch icons-->
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="57x57"
+	href="<c:url value="/resources/img/apple-touch-icon-57x57.png"/>" />
+<link rel="apple-touch-icon" sizes="72x72"
+	href="<c:url value="/resources/img/apple-touch-icon-72x72.png"/>" />
+<link rel="apple-touch-icon" sizes="76x76"
+	href="<c:url value="/resources/img/apple-touch-icon-76x76.png"/>" />
+<link rel="apple-touch-icon" sizes="114x114"
+	href="<c:url value="/resources/img/apple-touch-icon-114x114.png"/>" />
+<link rel="apple-touch-icon" sizes="120x120"
+	href="<c:url value="/resources/img/apple-touch-icon-120x120.png"/>" />
+<link rel="apple-touch-icon" sizes="144x144"
+	href="<c:url value="/resources/img/apple-touch-icon-144x144.png"/>" />
+<link rel="apple-touch-icon" sizes="152x152"
+	href="<c:url value="/resources/img/apple-touch-icon-152x152.png"/>" />
+<!-- owl carousel css -->
+
+<link href="<c:url value="/resources/css/owl.carousel.css"/>"
+	rel="stylesheet">
+<link href="<c:url value="/resources/css/owl.theme.css"/>"
+	rel="stylesheet">
+</head>
+
+<body>
+
+	<div id="all">
+
+		<header> <!-- *** TOP ***
+_________________________________________________________ -->
+		<div id="top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-5 contact">
+						<p class="hidden-sm hidden-xs">Contact us on 040 6646 9292 or
+							www.niit.com</p>
+						<p class="hidden-md hidden-lg">
+							<a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>
+							<a href="#" data-animate-hover="pulse"><i
+								class="fa fa-envelope"></i></a>
+						</p>
+					</div>
+					<div class="col-xs-7">
+						<div class="social">
+							<a href="https://www.facebook.com/login/"
+								class="external facebook" data-animate-hover="pulse"><i
+								class="fa fa-facebook"></i></a> <a href="https://plus.google.com/"
+								class="external gplus" data-animate-hover="pulse"><i
+								class="fa fa-google-plus"></i></a> <a href="https://www.twitter.com"
+								class="external twitter" data-animate-hover="pulse"><i
+								class="fa fa-twitter"></i></a> <a href="https://www.gmail.com"
+								class="email" data-animate-hover="pulse"><i
+								class="fa fa-envelope"></i></a>
+						</div>
+						<c:set var="subbu" value="16" />
+						<c:if test="${subbu > 10}">
+							<div class="login">
+								<a href="#" data-toggle="modal" data-target="#login-modal"><i
+									class="fa fa-sign-in"></i> <span
+									class="hidden-xs text-uppercase">Sign in</span></a> <a
+									href="register.jsp"><i class="fa fa-user"></i> <span
+									class="hidden-xs text-uppercase">Sign up</span></a>
+							</div>
+						</c:if>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- *** TOP END *** --> <!-- *** NAVBAR ***
+    _________________________________________________________ -->
+
+		<div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+			<div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+				<div class="container">
+					<div class="navbar-header">
+
+						<a class="navbar-brand home" href="index.html"> <img
+							src="<c:url value="/resources/img/logo.png"/>"
+							alt="Universal logo" class="hidden-xs hidden-sm"> <img
+							src="<c:url value="/resources/img/logo-small.png"/>"
+							alt="Universal logo" class="visible-xs visible-sm"><span
+							class="sr-only">Universal - go to homepage</span>
+						</a>
+						<div class="navbar-buttons">
+							<button type="button" class="navbar-toggle btn-template-main"
+								data-toggle="collapse" data-target="#navigation">
+								<span class="sr-only">Toggle navigation</span> <i
+									class="fa fa-align-justify"></i>
+							</button>
+						</div>
+					</div>
+					<!--/.navbar-header -->
+
+					<div class="navbar-collapse collapse" id="navigation">
+
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown active"><a href="javascript: void(0)"
+								class="dropdown-toggle" data-toggle="dropdown">Home <b
+									class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="index.jsp">AegeanHome</a></li>
+									<li><a href="about.jsp">AboutUs</a></li>
+
+								</ul></li>
+
+
+							<!-- ========== FULL WIDTH MEGAMENU ================== -->
+							<li class="dropdown use-yamm yamm-fw"><a href="category.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"
+								data-hover="dropdown" data-delay="200">Categories<b
+									class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li>
+										<div class="yamm-content">
+											<div class="row">
+												<div class="col-sm-3">
+													<h5>Electronics</h5>
+													<ul>
+														<li><a href="category.jsp">SmartPhones</a></li>
+														<li><a href="category.jsp">Tablets</a></li>
+														<li><a href="category.jsp">Cameras</a></li>
+														<li><a href="category.jsp">Audio</a></li>
+														<li><a href="category.jsp">ComputerAccesories</a></li>
+													</ul>
+													<h5>HomeNeeds</h5>
+													<ul>
+														<li><a href="category.jsp">Kitchen</a></li>
+														<li><a href="category.jsp">Furniture</a></li>
+														<li><a href="category.jsp">Cots n Mattress</a></li>
+														<li><a href="category.jsp">groceries</a></li>
+													</ul>
+
+												</div>
+
+
+												<div class="col-sm-3">
+													<h5>Fashion</h5>
+													<ul>
+														<li><a href="category.jsp">Mens</a></li>
+														<li><a href="category.jsp">Womens</a></li>
+														<li><a href="category.jsp">Kids</a></li>
+														<li><a href="category.jsp">HairProducts</a></li>
+														<li><a href="category.jsp">Cosmetics</a></li>
+													</ul>
+
+
+
+												</div>
+											</div>
+										</div> <!-- /.yamm-content -->
+									</li>
+								</ul></li>
+							<!-- ========== FULL WIDTH MEGAMENU END ================== -->
+
+							<li class="dropdown"><a href="javascript: void(0)"
+								class="dropdown-toggle" data-toggle="dropdown">Contact Us<b
+									class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="contact.jsp">Contact Us</a></li>
+
+
+								</ul></li>
+						</ul>
+
+					</div>
+					<!--/.nav-collapse -->
+
+
+
+					<div class="collapse clearfix" id="search">
+
+						<form class="navbar-form" role="search">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search">
+								<span class="input-group-btn">
+
+									<button type="submit" class="btn btn-template-main">
+										<i class="fa fa-search"></i>
+									</button>
+
+								</span>
+							</div>
+						</form>
+
+					</div>
+					<!--/.nav-collapse -->
+
+				</div>
+
+
+			</div>
+			<!-- /#navbar -->
+
+		</div>
+
+		<!-- *** NAVBAR END *** --> </header>
+
+		<!-- *** LOGIN MODAL ***
+_________________________________________________________ -->
+
+		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+			aria-labelledby="Login" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="Login">Customer login</h4>
+					</div>
+					<div class="modal-body">
+						<form action="customer-orders.html" method="post">
+							<div class="form-group">
+								<input type="text" class="form-control" id="email_modal"
+									placeholder="email">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" id="password_modal"
+									placeholder="password">
+							</div>
+
+							<p class="text-center">
+								<button class="btn btn-template-main">
+									<i class="fa fa-sign-in"></i> Log in
+								</button>
+							</p>
+
+						</form>
+
+						<p class="text-center text-muted">Not registered yet?</p>
+						<p class="text-center text-muted">
+							<a href="register.jsp"><strong>Register now</strong></a>! It is
+							easy and done in 1&nbsp;minute and gives you access to special
+							discounts and much more!
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- *** LOGIN MODAL END *** -->
+
+		<section> <!-- *** HOMEPAGE CAROUSEL ***
+ _________________________________________________________ -->
+
+		<div class="home-carousel">
+
+			<div class="dark-mask"></div>
+
+			<div class="container">
+				<div class="homepage owl-carousel">
+					<div class="item">
+						<div class="row">
+							<div class="col-sm-5 right">
+								<p>
+									<img src="<c:url value="/resources/img/logo.png"/>" alt="" />
+								</p>
+								<h1>Sony Xperia Z3</h1>
+								<p>
+									Dont settle for good <br />Demand Great <br />explore Xperia
+									Z3 in products section.
+								</p>
+							</div>
+							<div class="col-sm-7">
+								<img class="img-responsive"
+									src="<c:url value="/resources/img/template-homepage.png"/>"
+									alt="" />
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
+
+							<div class="col-sm-7 text-center">
+								<img class="img-responsive"
+									src="<c:url value="/resources/img/template-mac.png"/>" alt="" />
+							</div>
+
+							<div class="col-sm-5">
+								<h2>LG Dual Washing Machine</h2>
+								<ul class="list-style-none">
+									<li>combines both front load and top load</li>
+									<li>4 Embedded with innovative new LG technologies.</li>
+									<li>Explore LG from products section</li>
+
+								</ul>
+							</div>
+
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
+							<div class="col-sm-5 right">
+								<h1>SONY X935D</h1>
+								<ul class="list-style-none">
+									<li>Spectacular 4K HDR picture and sound clarity</li>
+									<li>The most immersive 4K HDR pictures.</li>
+									<li>The most authentic High-Resolution Audio</li>
+									<li>Explore Sony X935D from products section</li>
+								</ul>
+							</div>
+							<div class="col-sm-7">
+								<img class="img-responsive"
+									src="<c:url value="/resources/img/template-easy-customize.png"/>"
+									alt="" />
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
+							<div class="col-sm-7">
+								<img class="img-responsive"
+									src="<c:url value="/resources/img/template-easy-code.png"/>"
+									alt="" />
+							</div>
+							<div class="col-sm-5">
+								<h1>Apple Iphone 7 series</h1>
+								<ul class="list-style-none">
+									<li>Coming soon</li>
+									<li>SignUp for Aegean for more updates</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.project owl-slider -->
+			</div>
+		</div>
+
+		<!-- *** HOMEPAGE CAROUSEL END *** --> </section>
+
+		<section class="bar background-white no-mb">
+		<div class="container" data-animate="fadeInUp">
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="heading text-center">
+						<h2>Featured products</h2>
+					</div>
+
+					<div class="row">
+						<div class="portfolio-showcase clearfix">
+							<div class="col-sm-6">
+								<div class="image">
+									<img src="<c:url value="/resources/img/portfolio-4.jpg"/>"
+										alt="" class="img-responsive" />
+								</div>
+							</div>
+
+							<div class="col-sm-6">
+								<h3>
+									<a
+										href="http://www.sonymobile.com/global-en/products/phones/xperia-z3/">Sony
+										Xperia Z3</a>
+								</h3>
+								<p class="lead">Do more than you thought possible.</p>
+								<p>Impossibly slim and wonderfully powerful, the Xperia Z3
+									is the smartphone that helps you do more and go further.</p>
+								<p class="buttons">
+									<a href="category.jsp" class="btn btn-template-main">View</a> <a
+										href="http://www.sonymobile.com/global-en/products/phones/xperia-z3/"
+										class="btn btn-template-main">Visit website</a>
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="heading text-center">
+						<h3>Latest from Aegean</h3>
+					</div>
+
+					<div class="row portfolio no-space">
+						<div class="col-sm-4">
+							<div class="box-image">
+								<div class="image">
+									<img src="<c:url value="/resources/img/portfolio-1.jpg"/>"
+										alt="" class="img-responsive" />
+								</div>
+								<div class="bg"></div>
+								<div class="name">
+									<h3>
+										<a href="product.jsp">Samsung Galaxy Note7</a>
+									</h3>
+								</div>
+								<div class="text">
+									<p class="hidden-sm">Pre-order note7 and get Gear VR for
+										just ?1,990/-</p>
+									<p class="buttons">
+										<a href="product.jsp">View</a> <a
+											href="http://www.samsung.com/global/galaxy/galaxy-note7/"
+											class="btn btn-template-transparent-primary">Website</a>
+									</p>
+								</div>
+							</div>
+							<!-- /.box-image -->
+
+						</div>
+
+						<div class="col-sm-4">
+							<div class="box-image">
+								<div class="image">
+									<img src="<c:url value="/resources/img/portfolio-2.jpg"/>"
+										alt="" class="img-responsive" />
+								</div>
+								<div class="bg"></div>
+								<div class="name">
+									<h3>
+										<a href="product.jsp">Mens Collection</a>
+									</h3>
+								</div>
+								<div class="text">
+									<p class="hidden-sm">Change your wardrobe with this fresh
+										collections from Aegean</p>
+									<p class="buttons">
+										<a href="product.jsp"
+											class="btn btn-template-transparent-primary">View</a> <a
+											href="product.jsp"
+											class="btn btn-template-transparent-primary">Website</a>
+									</p>
+								</div>
+							</div>
+							<!-- /.box-image -->
+
+						</div>
+
+						<div class="col-sm-4">
+							<div class="box-image">
+								<div class="image">
+									<img src="<c:url value="/resources/img/portfolio-3.jpg"/>"
+										alt="" class="img-responsive" />
+								</div>
+								<div class="bg"></div>
+								<div class="name">
+									<h3>
+										<a href="portfolio-detail.html">Sony X935D</a>
+									</h3>
+								</div>
+								<div class="text">
+									<p class="hidden-sm">The most immersive 4K HDR pictures.
+										The most authentic High-Resolution Audio.</p>
+									<p class="buttons">
+										<a href="product.jsp">View</a> <a
+											href="http://www.sony.co.in/electronics/televisions/x9350d-series"
+											class="btn btn-template-transparent-primary">Website</a>
+									</p>
+								</div>
+							</div>
+							<!-- /.box-image -->
+
+						</div>
+
+						<div class="col-sm-4">
+							<div class="box-image">
+								<div class="image">
+									<img src="<c:url value="/resources/img/portfolio-4.jpg"/>"
+										alt="" class="img-responsive" />
+								</div>
+								<div class="bg"></div>
+								<div class="name">
+									<h3>
+										<a href="portfolio-detail.html">Sony Xperia Z3</a>
+									</h3>
+								</div>
+								<div class="text">
+									<p class="hidden-sm">Dont settle for good.Demand great.</p>
+									<p class="buttons">
+										<a href="product.jsp"
+											class="btn btn-template-transparent-primary">View</a> <a
+											href="http://www.sonymobile.com/global-en/products/phones/xperia-z3/"
+											class="btn btn-template-transparent-primary">Website</a>
+									</p>
+								</div>
+							</div>
+							<!-- /.box-image -->
+						</div>
+
+						<div class="col-sm-4">
+							<div class="box-image">
+								<div class="image">
+									<img src="<c:url value="/resources/img/portfolio-5.jpg"/>"
+										alt="" class="img-responsive" />
+								</div>
+								<div class="bg"></div>
+								<div class="name">
+									<h3>
+										<a href="portfolio-detail.html">LG Side kick</a>
+									</h3>
+								</div>
+								<div class="text">
+									<p class="hidden-sm">LG's new innovation brings both front
+										and top load together.</p>
+									<p class="buttons">
+										<a href="product.jsp"
+											class="btn btn-template-transparent-primary">View</a> <a
+											href="http://www.lg.com/us/twinwash"
+											class="btn btn-template-transparent-primary">Website</a>
+									</p>
+								</div>
+							</div>
+							<!-- /.box-image -->
+						</div>
+
+						<div class="col-sm-4">
+							<div class="box-image">
+								<div class="image">
+									<img src="<c:url value="/resources/img/portfolio-6.jpg"/>"
+										alt="" class="img-responsive" />
+								</div>
+								<div class="bg"></div>
+								<div class="name">
+									<h3>
+										<a href="portfolio-detail.html">Sony Alpha a7R II</a>
+									</h3>
+								</div>
+								<div class="text">
+									<p class="hidden-sm">The world’s first2 35 mm full-frame
+										image sensor with back-illuminated structure.</p>
+									<p class="buttons">
+										<a href="product.jsp"
+											class="btn btn-template-transparent-primary">View</a> <a
+											href="http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-7rm2"
+											class="btn btn-template-transparent-primary">Website</a>
+									</p>
+								</div>
+							</div>
+							<!-- /.box-image -->
+						</div>
+
+
+
+						<div class="see-more">
+							<a href="products.jsp" class="btn btn-template-main">view all
+								products</a>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+
+		<!-- /.bar -->
+
+		<!-- *** BLOG HOMEPAGE END *** -->
+
+
+
+
+		<!-- *** FOOTER ***
+_________________________________________________________ -->
+
+		<footer id="footer">
+		<div class="container">
+			<div class="col-md-3 col-sm-6">
+				<h4>About us</h4>
+
+				<p>Aegean is a newbie in e-commerce world. We endeavor to build
+					that same destination in India by giving customers more of what
+					they want – vast selection, low prices, fast and reliable delivery,
+					and a trusted and convenient online shopping experience – and
+					provide sellers a world-class e-commerce platform. We are committed
+					to ensure 100% Purchase Protection for your shopping done on
+					Aegean.in so that you can benefit from a safe and secure online
+					ordering experience, convenient payment options such as cash on
+					delivery, easy returns and enjoy a completely hassle free online
+					shopping experience.</p>
+
+
+
+				<div class="col-md-3 col-sm-6">
+
+					<h4>Contact</h4>
+
+					<p>
+						<strong>Aegean-Ltd.</strong> <br>NIIT Digital_Transformation
+						<br>NIIT <br>dilsukhnagar <br>Hyderabad <br> <strong>Digital
+							India</strong>
+					</p>
+
+					<a href="contact.jsp" class="btn btn-small btn-template-main">Go
+						to contact page</a>
+
+					<hr class="hidden-md hidden-lg hidden-sm">
+
+				</div>
+				<!-- /.col-md-3 -->
+
+
+
+
+				<!-- /.col-md-3 -->
+			</div>
+			<!-- /.container -->
+		</footer>
+		<!-- /#footer -->
+
+		<!-- *** FOOTER END *** -->
+
+		<!-- *** COPYRIGHT ***
+_________________________________________________________ -->
+
+		<div id="copyright">
+			<div class="container">
+				<div class="col-md-12">
+					<p class="pull-left">&copy; 2016. NIIT / Aegean</p>
+
+
+
+
+				</div>
+			</div>
+		</div>
+		<!-- /#copyright -->
+
+		<!-- *** COPYRIGHT END *** -->
+
+
+
+	</div>
+	<!-- /#all -->
+
+	<!-- #### JAVASCRIPT FILES ### -->
+
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+	</script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+	<script src="<c:url value="/resources/js/jquery.cookie.js"/>"></script>
+	<script src="<c:url value="/resources/js/waypoints.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/jquery.counterup.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/jquery.parallax-1.1.3.js"/>"></script>
+	<script src="<c:url value="/resources/js/front.js"/>"></script>
+
+
+
+	<!-- owl carousel -->
+	<script src="<c:url value="/resources/js/owl.carousel.min.js"/>"></script>
+
+
+
+</body>
 
 </html>
