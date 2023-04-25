@@ -1,24 +1,19 @@
-# Using official python runtime base image
-FROM python:3.9-slim
+# this is my base image
+FROM alpine:3.5
 
-# add curl for healthcheck
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+# Install python and pip
+RUN apk add --update py2-pip
 
-# Set the application directory
-WORKDIR /app
+# install Python modules needed by the Python app
+COPY requirements.txt /usr/src/app/
+RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
 
-# Install our requirements.txt
-COPY requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
+# copy files required for the app to run
+COPY app.py /usr/src/app/
+COPY templates/index.html /usr/src/app/templates/
 
-# Copy our code from the current folder to /app inside the container
-COPY . .
+# tell the port number the container should expose
+EXPOSE 5000
 
-# Make port 80 available for links and/or publish
-EXPOSE 80
-
-# Define our command to be run when launching the container
-CMD ["gunicorn", "app:app", "-b", "0.0.0.0:80", "--log-file", "-", "--access-logfile", "-", "--workers", "4", "--keep-alive", "0"]
+# run the application
+CMD ["python", "/usr/src/app/app.py"]
