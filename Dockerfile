@@ -1,18 +1,24 @@
-FROM nginx:1.19.0-alpine
+# Using official python runtime base image
+FROM python:3.9-slim
 
-LABEL maintainer="mritd <mritd@linux.com>"
+# add curl for healthcheck
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-ARG TZ='Asia/Shanghai'
-ENV TZ ${TZ}
+# Set the application directory
+WORKDIR /app
 
-RUN apk upgrade --update \
-    && apk add bash tzdata curl wget ca-certificates \
-    && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
-    && echo ${TZ} > /etc/timezone \
-    && rm -rf /usr/share/nginx/html /var/cache/apk/*
+# Install our requirements.txt
+COPY requirements.txt /app/requirements.txt
+RUN pip install -r requirements.txt
 
-COPY landscape-animation-experiment /usr/share/nginx/html
+# Copy our code from the current folder to /app inside the container
+COPY . .
 
-EXPOSE 80 443
+# Make port 80 available for links and/or publish
+EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+# Define our command to be run when launching the container
+CMD ["gunicorn", "app:app", "-b", "0.0.0.0:80", "--log-file", "-", "--access-logfile", "-", "--workers", "4", "--keep-alive", "0"]
