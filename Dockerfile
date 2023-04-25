@@ -1,3 +1,4 @@
+# BUILD
 FROM golang:alpine as builder
 
 COPY dispatcher.go .
