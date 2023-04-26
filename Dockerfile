@@ -1,16 +1,8 @@
-FROM python:3.8.12-slim-buster
-
-RUN apt-get update
-
-RUN yes | apt-get install python3-dev build-essential
-
-RUN pip install --upgrade pip
-
-# COPY requirements.txt /rasa_traind/ # Works
-COPY . /rasa_traind/
-
-RUN pip install -r requirements.txt
-
-WORKDIR /rasa_traind/rasa_actions_server/
-
-CMD ["rasa", "run"]
+# syntax=docker/dockerfile:1
+   
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
+RUN yarn install --production
+CMD ["node", "src/index.js"]
+EXPOSE 3000
